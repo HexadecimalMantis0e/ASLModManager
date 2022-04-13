@@ -326,11 +326,19 @@ class ASLModManager:
             msgBox = messagebox.showerror("Error", "Invalid version!")
             return False
 
+    def filterDirectory(self, dirName):
+        dirList = []
+
+        for fileName in os.listdir(dirName):
+            if not os.path.isdir(os.path.join(dirName, fileName)):
+                dirList.append(fileName)
+        return dirList
+
     def checkDirectory(self, fileList):
         if len(fileList) != 0:
             return True
         else:
-            msgBox = messagebox.showerror("Error", "Directory is empty!")
+            msgBox = messagebox.showerror("Error", "Directory contains no files!")
             return False
 
     def checkFilesConfig(self):
@@ -429,7 +437,7 @@ class ASLModManager:
         dirName = filedialog.askdirectory()
 
         if dirName:
-            dirList = os.listdir(dirName)
+            dirList = self.filterDirectory(dirName)
 
             if self.checkDirectory(dirList):
                 self.dirName = os.path.basename(dirName) + ".DIR"
@@ -590,7 +598,7 @@ class ASLModManager:
         dirName = filedialog.askdirectory()
 
         if dirName:
-            dirList = os.listdir(dirName)
+            dirList = self.filterDirectory(dirName)
 
             if self.checkDirectory(dirList):
                 if self.checkFilesConfig():
