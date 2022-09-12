@@ -187,29 +187,25 @@ class ASLModManager:
         self.innerFileInfo = ttk.Frame(self.outerFileInfo)
         self.innerFileInfo.grid(row = 0, column = 0, padx = 4, pady = 4, sticky = "NSEW")
         self.innerFileInfo.grid_columnconfigure(0, weight = 1)
-        self.typeLabel = ttk.Label(self.innerFileInfo, text = "Type:", state = "disabled")
+        self.typeLabel = ttk.Label(self.innerFileInfo, text = "Type:")
         self.typeLabel.grid(row = 0, column = 0, pady = (0, 2), sticky = 'W')
         self.typeEntryText = tk.StringVar()
         self.typeEntry = ttk.Entry(self.innerFileInfo, textvariable = self.typeEntryText, state = "disabled", width = 16)
-        self.typeEntry.bind("<Key>", lambda a: "break")
         self.typeEntry.grid(row = 0, column = 1, pady = (0, 2))
-        self.sizeLabel = ttk.Label(self.innerFileInfo, text = "Size:", state = "disabled")
+        self.sizeLabel = ttk.Label(self.innerFileInfo, text = "Size:")
         self.sizeLabel.grid(row = 1, column = 0, pady = 2, sticky = 'W')
         self.sizeEntryText = tk.StringVar()
         self.sizeEntry = ttk.Entry(self.innerFileInfo, textvariable = self.sizeEntryText, state = "disabled", width = 16)
-        self.sizeEntry.bind("<Key>", lambda a: "break")
         self.sizeEntry.grid(row = 1, column = 1, pady = 2)
-        self.addressLabel = ttk.Label(self.innerFileInfo, text = "Address:", state = "disabled")
+        self.addressLabel = ttk.Label(self.innerFileInfo, text = "Address:")
         self.addressLabel.grid(row = 2, column = 0, pady = 2, sticky = 'W')
         self.addressEntryText = tk.StringVar()
         self.addressEntry = ttk.Entry(self.innerFileInfo, textvariable = self.addressEntryText, state = "disabled", width = 16)
-        self.addressEntry.bind("<Key>", lambda a: "break")
         self.addressEntry.grid(row = 2, column = 1, pady = 2)
-        self.statusLabel = ttk.Label(self.innerFileInfo, text = "Status:", state = "disabled")
+        self.statusLabel = ttk.Label(self.innerFileInfo, text = "Status:")
         self.statusLabel.grid(row = 3, column = 0, pady = (2, 0), sticky = 'W')
         self.statusEntryText = tk.StringVar()
         self.statusEntry = ttk.Entry(self.innerFileInfo, textvariable = self.statusEntryText, state = "disabled", width = 16)
-        self.statusEntry.bind("<Key>", lambda a: "break")
         self.statusEntry.grid(row = 3, column = 1, pady = (2, 0))
         self.outerWadInfo = ttk.LabelFrame(self.gameTab, text = "Wad Info")
         self.outerWadInfo.grid(row = 2, column = 1, padx = 8, pady = 8, sticky = "NSEW")
@@ -218,29 +214,25 @@ class ASLModManager:
         self.innerWadInfo = ttk.Frame(self.outerWadInfo)
         self.innerWadInfo.grid(row = 0, column = 0, padx = 4, pady = 4, sticky = "NSEW")
         self.innerWadInfo.grid_columnconfigure(0, weight = 1)
-        self.versionLabel = ttk.Label(self.innerWadInfo, text = "Version:", state = "disabled")
+        self.versionLabel = ttk.Label(self.innerWadInfo, text = "Version:")
         self.versionLabel.grid(row = 0, column = 0, pady = (0, 2), sticky = 'W')
         self.versionEntryText = tk.StringVar()
         self.versionEntry = ttk.Entry(self.innerWadInfo, textvariable = self.versionEntryText, state = "disabled", width = 16)
-        self.versionEntry.bind("<Key>", lambda a: "break")
         self.versionEntry.grid(row = 0, column = 1, pady = (0, 2))
-        self.descriptionLabel = ttk.Label(self.innerWadInfo, text = "Description:", state = "disabled")
+        self.descriptionLabel = ttk.Label(self.innerWadInfo, text = "Description:")
         self.descriptionLabel.grid(row = 1, column = 0, pady = 2, sticky = 'W')
         self.descriptionEntryText = tk.StringVar()
         self.descriptionEntry = ttk.Entry(self.innerWadInfo, textvariable = self.descriptionEntryText, state = "disabled", width = 16)
-        self.descriptionEntry.bind("<Key>", lambda a: "break")
         self.descriptionEntry.grid(row = 1, column = 1, pady = 2)
-        self.signatureLabel = ttk.Label(self.innerWadInfo, text = "Signature:", state = "disabled")
+        self.signatureLabel = ttk.Label(self.innerWadInfo, text = "Signature:")
         self.signatureLabel.grid(row = 2, column = 0, pady = 2, sticky = 'W')
         self.signatureEntryText = tk.StringVar()
         self.signatureEntry = ttk.Entry(self.innerWadInfo, textvariable = self.signatureEntryText, state = "disabled", width = 16)
-        self.signatureEntry.bind("<Key>", lambda a: "break")
         self.signatureEntry.grid(row = 2, column = 1, pady = 2)
-        self.argumentsLabel = ttk.Label(self.innerWadInfo, text = "Arguments:", state = "disabled")
+        self.argumentsLabel = ttk.Label(self.innerWadInfo, text = "Arguments:")
         self.argumentsLabel.grid(row = 3, column = 0, pady = (2, 0), sticky = 'W')
         self.argumentsEntryText = tk.StringVar()
         self.argumentsEntry = ttk.Entry(self.innerWadInfo, textvariable = self.argumentsEntryText, state = "disabled", width = 16)
-        self.argumentsEntry.bind("<Key>", lambda a: "break")
         self.argumentsEntry.grid(row = 3, column = 1, pady = (2, 0))
         self.outerWadSettings = ttk.LabelFrame(self.settingsTab, text = "Wad Settings")
         self.outerWadSettings.grid(row = 1, column = 0, padx = 8, pady = 8, sticky = "NSEW")
@@ -267,24 +259,24 @@ class ASLModManager:
 
     def clearEntries(self, option):
         if option == 0:
-            self.typeEntry.delete(0, "end")
-            self.sizeEntry.delete(0, "end")
-            self.addressEntry.delete(0, "end")
-            self.statusEntry.delete(0, "end")
+            self.typeEntryText.set("")
+            self.sizeEntryText.set("")
+            self.addressEntryText.set("")
+            self.statusEntryText.set("")
         elif option == 1:
-            self.versionEntry.delete(0, "end")
-            self.descriptionEntry.delete(0, "end")
-            self.signatureEntry.delete(0, "end")
-            self.argumentsEntry.delete(0, "end")
+            self.versionEntryText.set("")
+            self.descriptionEntryText.set("")
+            self.signatureEntryText.set("")
+            self.argumentsEntryText.set("")
         elif option == 2:
-            self.typeEntry.delete(0, "end")
-            self.sizeEntry.delete(0, "end")
-            self.addressEntry.delete(0, "end")
-            self.statusEntry.delete(0, "end")
-            self.versionEntry.delete(0, "end")
-            self.descriptionEntry.delete(0, "end")
-            self.signatureEntry.delete(0, "end")
-            self.argumentsEntry.delete(0, "end")
+            self.typeEntryText.set("")
+            self.sizeEntryText.set("")
+            self.addressEntryText.set("")
+            self.statusEntryText.set("")
+            self.versionEntryText.set("")
+            self.descriptionEntryText.set("")
+            self.signatureEntryText.set("")
+            self.argumentsEntryText.set("")
 
     def setMenuStates(self, widgetState):
         self.fileMenu.entryconfig("Close Game", state = widgetState)
@@ -293,29 +285,35 @@ class ASLModManager:
         self.editMenu.entryconfig("Add File", state = widgetState)
         self.editMenu.entryconfig("Add Directory", state = widgetState)
 
-    def setFrameStates(self, widgetState, option):
+    def setEntryStates(self, widgetState, option):
         if option == 0:
-            for child in self.innerFileInfo.winfo_children():
-                child.configure(state = widgetState)
+            self.typeEntry.configure(state = widgetState)
+            self.sizeEntry.configure(state = widgetState)
+            self.addressEntry.configure(state = widgetState)
+            self.statusEntry.configure(state = widgetState)
         elif option == 1:
-            for child in self.innerWadInfo.winfo_children():
-                child.configure(state = widgetState)
+            self.versionEntry.configure(state = widgetState)
+            self.descriptionEntry.configure(state = widgetState)
+            self.signatureEntry.configure(state = widgetState)
+            self.argumentsEntry.configure(state = widgetState)
         elif option == 2:
-            for child in self.innerWadSettings.winfo_children():
-                child.configure(state = widgetState)
+            self.dvEntry.configure(state = widgetState)
         elif option == 3:
-            for child in self.innerFileInfo.winfo_children():
-                child.configure(state = widgetState)
-
-            for child in self.innerWadInfo.winfo_children():
-                child.configure(state = widgetState)
+            self.typeEntry.configure(state = widgetState)
+            self.sizeEntry.configure(state = widgetState)
+            self.addressEntry.configure(state = widgetState)
+            self.statusEntry.configure(state = widgetState)
+            self.versionEntry.configure(state = widgetState)
+            self.descriptionEntry.configure(state = widgetState)
+            self.signatureEntry.configure(state = widgetState)
+            self.argumentsEntry.configure(state = widgetState)
 
     def closeGame(self):
         self.clearGame()
         self.clearEntries(2)
         self.setMenuStates("disabled")
-        self.setFrameStates("normal", 2)
-        self.setFrameStates("disabled", 3)
+        self.setEntryStates("normal", 2)
+        self.setEntryStates("disabled", 3)
 
     def validateVersion(self):
         defaultVersion = self.dvEntryText.get()
@@ -341,22 +339,14 @@ class ASLModManager:
             msgBox = messagebox.showerror("Error", "Directory contains no files!")
             return False
 
-    def checkFilesConfig(self):
-        if os.path.exists("Files.ini"):
-            return True
-        else:
-            msgBox = messagebox.showerror("Error", "Files.ini not found!")
-            self.closeGame()
-            return False
-
     def writeSettings(self, parser, hvState, avState, dvState):
         parser.add_section("Settings")
         parser.set("Settings", "hexVersion", hvState)
         parser.set("Settings", "autoVersion", avState)
         parser.set("Settings", "defaultVersion", dvState)
-        f = open("Settings.ini", 'w')
-        parser.write(f)
-        f.close()
+        fp = open("Settings.ini", 'w')
+        parser.write(fp)
+        fp.close()
 
     def loadSettings(self):
         configPath = "Settings.ini"
@@ -387,9 +377,33 @@ class ASLModManager:
             self.loadSettings()
             msgBox = messagebox.showinfo("Info", "Settings saved successfully.")
 
+    def loadFileHashes(self):
+        configPath = "Files.ini"
+        config = configparser.ConfigParser()
+
+        if not os.path.exists(configPath):
+            self.fileHashes = dict()
+            writeHash = True
+        else:
+            config.read(configPath)
+            self.fileHashes = dict(config['Files'])
+            writeHash = False
+
+        return writeHash
+
+    def writeFileHashes(self, config):
+        config.add_section("Files")
+
+        for key in self.fileHashes.keys():
+            config.set("Files", key, self.fileHashes[key])
+
+        fp = open("Files.ini", 'w')
+        config.write(fp)
+        fp.close()
+
     def initUI(self):
         self.setMenuStates("active")
-        self.setFrameStates("disabled", 2)
+        self.setEntryStates("disabled", 2)
         self.listBox.select_set(0)
         self.listBox.event_generate("<<ListboxSelect>>")
         self.selectFile()
@@ -414,22 +428,15 @@ class ASLModManager:
             self.clearGame()
             self.game = ASLGame(ASLDir(), ASLWad())
             self.game.readGame(dirPointer, wadPointer)
-            configPath = "Files.ini"
-            writeHash = False
             config = configparser.ConfigParser()
-
-            if not os.path.exists(configPath):
-                config.add_section("Files")
-                f = open(configPath, 'w')
-                writeHash = True
+            writeHash = self.loadFileHashes()
 
             for i in range(0, self.game.dir.count):
                 self.listBox.insert(i, self.game.dir.entries[i].name)
-                self.loadFile(i, config, writeHash)
+                self.loadFile(i, writeHash)
 
             if writeHash:
-                config.write(f)
-                f.close()
+                self.writeFileHashes(config)
 
             self.initUI()
 
@@ -448,25 +455,18 @@ class ASLModManager:
         if self.validateVersion():
             self.clearGame()
             self.game = ASLGame(ASLDir(), ASLWad())
-            configPath = "Files.ini"
-            writeHash = False
             config = configparser.ConfigParser()
-
-            if not os.path.exists(configPath):
-                config.add_section("Files")
-                f = open(configPath, 'w')
-                writeHash = True
+            writeHash = self.loadFileHashes()
 
             for i in range(0, len(directory)):
                 fp = open(os.path.join(dirName, directory[i]), "rb")
                 self.game.addFile(fp)
                 fp.close()
                 self.listBox.insert(i, directory[i])
-                self.loadFile(i, config, writeHash)
+                self.loadFile(i, writeHash)
 
             if writeHash:
-                config.write(f)
-                f.close()
+                self.writeFileHashes(config)
 
             self.initUI()
 
@@ -483,14 +483,14 @@ class ASLModManager:
         fileBytes.seek(0x00, os.SEEK_SET)
         return md5Hash
 
-    def loadFile(self, index, parser, writeHash):
+    def loadFile(self, index, writeHash):
         avFlag = False
         currentFile = self.game.wad.files[index]
         currentName = self.game.dir.entries[index].name
 
         if writeHash:
             currentMd5 = self.calculateMd5(currentFile)
-            parser.set("Files", currentName, str(currentMd5))
+            self.fileHashes[currentName.lower()] = str(currentMd5)
 
         header = currentFile.read(0x04)
 
@@ -511,21 +511,18 @@ class ASLModManager:
         currentFile.seek(0x00, os.SEEK_SET)
 
         if not writeHash or avFlag:
-            currentMd5 = self.calculateMd5(currentFile)
-            parser.read("Files.ini")
-
-            try:
-                storedMd5 = parser.get("Files", currentName)
+            if currentName.lower() in self.fileHashes:
+                currentMd5 = self.calculateMd5(currentFile)
+                storedMd5 = self.fileHashes.get(currentName.lower())
 
                 if currentMd5 != storedMd5:
                     self.listBox.itemconfig(index, {"fg": "green"})
                 else:
                     self.listBox.itemconfig(index, {"fg": "black"})
-            except configparser.NoOptionError:
+            else:
                 self.listBox.itemconfig(index, {"fg": "green"})
 
     def selectFile(self):
-        config = configparser.ConfigParser()
         fileIndex = self.listBox.curselection()
 
         if fileIndex:
@@ -535,10 +532,10 @@ class ASLModManager:
             self.sizeEntryText.set(hex(self.game.dir.entries[fileIndex].size))
             self.addressEntryText.set(hex(self.game.dir.entries[fileIndex].address))
             header = self.currentFile.read(4)
-            self.setFrameStates("normal", 0)
+            self.setEntryStates("readonly", 0)
 
             if header == "BIGB".encode():
-                self.setFrameStates("normal", 1)
+                self.setEntryStates("readonly", 1)
                 self.typeEntryText.set("Strat Wad")
                 self.currentFile.seek(0x08, os.SEEK_SET)
                 wadVersion = struct.unpack('I', self.currentFile.read(4))[0]
@@ -559,24 +556,21 @@ class ASLModManager:
                 self.argumentsEntryText.set(arguments)
             else:
                 self.clearEntries(1)
-                self.setFrameStates("disabled", 1)
+                self.setEntryStates("disabled", 1)
                 self.typeEntryText.set("Other")
 
             self.currentFile.seek(0x00, os.SEEK_SET)
 
-            if self.checkFilesConfig():
-                config.read("Files.ini")
+            if self.currentFileName.lower() in self.fileHashes:
+                currentMd5 = self.calculateMd5(self.currentFile)
+                storedMd5 = self.fileHashes.get(self.currentFileName.lower())
 
-                try:
-                    currentMd5 = self.calculateMd5(self.currentFile)
-                    storedMd5 = config.get("Files", self.currentFileName)
-
-                    if currentMd5 == storedMd5:
-                        self.statusEntryText.set("Original")
-                    else:
-                        self.statusEntryText.set("Edited!")
-                except configparser.NoOptionError:
-                    self.statusEntryText.set("New!")
+                if currentMd5 == storedMd5:
+                    self.statusEntryText.set("Original")
+                else:
+                    self.statusEntryText.set("Edited!")
+            else:
+                self.statusEntryText.set("New!")
 
     def selectFileEvent(self, event):
         self.selectFile()
@@ -585,14 +579,13 @@ class ASLModManager:
         filePath = filedialog.askopenfile(mode = "rb", filetypes = (("All Files", "*.*"),))
 
         if filePath:
-            if self.checkFilesConfig():
-                result = self.processFile(filePath)
-                filePath.close()
+            result = self.processFile(filePath)
+            filePath.close()
 
-                if result:
-                    msgBox = messagebox.showinfo("Info", "File replaced successfully.")
-                else:
-                    msgBox = messagebox.showinfo("Info", "File appended successfully.")
+            if result:
+                msgBox = messagebox.showinfo("Info", "File replaced successfully.")
+            else:
+                msgBox = messagebox.showinfo("Info", "File appended successfully.")
 
     def addDirectory(self):
         dirName = filedialog.askdirectory()
@@ -601,37 +594,35 @@ class ASLModManager:
             dirList = self.filterDirectory(dirName)
 
             if self.checkDirectory(dirList):
-                if self.checkFilesConfig():
-                    newFileCount = 0
-                    replaceFileCount = 0
+                newFileCount = 0
+                replaceFileCount = 0
 
-                    for fileName in dirList:
-                        filePath = os.path.join(dirName, fileName)
-                        f = open(filePath, "rb")
-                        result = self.processFile(f)
-                        f.close()
+                for fileName in dirList:
+                    filePath = os.path.join(dirName, fileName)
+                    fp = open(filePath, "rb")
+                    result = self.processFile(fp)
+                    fp.close()
 
-                        if result:
-                            replaceFileCount += 1
-                        else:
-                            newFileCount += 1
+                    if result:
+                        replaceFileCount += 1
+                    else:
+                        newFileCount += 1
 
-                    msgBox = messagebox.showinfo("Info", str(replaceFileCount) + " file(s) replaced.\n" + str(newFileCount) + " files(s) appended.")
+                msgBox = messagebox.showinfo("Info", str(replaceFileCount) + " file(s) replaced.\n" + str(newFileCount) + " files(s) appended.")
 
     def processFile(self, fp):
-        config = configparser.ConfigParser()
         fileMatch = False
 
         for i in range(0, self.game.dir.count):
             if os.path.basename(fp.name) == self.game.dir.entries[i].name:
                 self.game.replaceFile(fp, i)
-                self.loadFile(i, config, False)
+                self.loadFile(i, False)
                 fileMatch = True
                 break
         else:
             self.game.addFile(fp)
             self.listBox.insert(self.game.dir.count, os.path.basename(fp.name))
-            self.loadFile(i + 1, config, False)
+            self.loadFile(i + 1, False)
         return fileMatch
 
     def extractFile(self):
@@ -651,9 +642,9 @@ class ASLModManager:
 
             for i in range(0, self.game.dir.count):
                 filePath = os.path.join(combined, self.game.dir.entries[i].name)
-                f = open(filePath, "wb")
-                f.write(self.game.wad.files[i].getbuffer())
-                f.close()
+                fp = open(filePath, "wb")
+                fp.write(self.game.wad.files[i].getbuffer())
+                fp.close()
 
             msgBox = messagebox.showinfo("Info", "Game extracted successfully.")
 
